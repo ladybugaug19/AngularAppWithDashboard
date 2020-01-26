@@ -4,6 +4,7 @@ import { DefaultComponent } from "./default.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { NgxSpinnerModule } from 'ngx-spinner';
 // import { SharedModule } from "../shared.module";
 import {
   MatSidenavModule,
@@ -64,6 +65,7 @@ import { RegisterComponent } from 'src/app/modules/register/register.component';
     MatInputModule,
     MatRippleModule,
     MatListModule,
+    NgxSpinnerModule,
     Ng8BreadcrumbModule.forRoot({
       prefix: 'Home', // default 'false'
     }),

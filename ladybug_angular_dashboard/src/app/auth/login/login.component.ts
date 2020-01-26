@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   emailSent:boolean=false;
 
   ngOnInit() {
+
+
     console.log("email status-->", sessionStorage.getItem("emailSent"));
     if(sessionStorage.getItem("emailSent") == "true"){
       this.emailSent = sessionStorage.getItem("emailSent") == "true";

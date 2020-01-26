@@ -3,6 +3,7 @@ import { NgModule, Directive } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from "ngx-spinner";
 import {
   MatSidenavModule,
   MatDividerModule,
@@ -68,7 +69,8 @@ import { ProjectsModule } from './modules/projects/projects.module';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    ProjectsModule
+    ProjectsModule,
+    NgxSpinnerModule
   ],
   providers: [AuthService, EmployeeService, ProjectService],
   bootstrap: [AppComponent]

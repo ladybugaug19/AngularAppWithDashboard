@@ -1,5 +1,17 @@
 <!-- <app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header> -->
 
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#333"
+size = "large"
+color = "#ffffff"
+type = "pacman"
+[fullScreen] = "true"
+>
+<p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+
 <mat-drawer-container style="background-color: white;">
     <mat-drawer mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar>

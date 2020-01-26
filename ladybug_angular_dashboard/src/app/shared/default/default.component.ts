@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from 'ng8-breadcrumb';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-default',
@@ -12,14 +13,22 @@ export class DefaultComponent implements OnInit {
 
   breadcrumbDisplay:boolean;
 
-  constructor(private _breadcrumb: BreadcrumbService) { }
+  constructor(private _breadcrumb: BreadcrumbService, private spinner:NgxSpinnerService) { }
 
   ngOnInit() {
+
+    
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
+
     this.breadcrumbDisplay = true;
     console.log("breadcrumbDisplay-->",this.breadcrumbDisplay);
     // this._breadcrumb.store('id', "Project");
     this._breadcrumb.store('projectId',"");
     this._breadcrumb.store('bugId',"bug");
+
    }
 
 
