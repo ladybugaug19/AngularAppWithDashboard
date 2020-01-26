@@ -1,0 +1,11 @@
+<!-- <app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header> -->
+
+<mat-drawer-container style="background-color: white;">
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ng8-breadcrumb></ng8-breadcrumb>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

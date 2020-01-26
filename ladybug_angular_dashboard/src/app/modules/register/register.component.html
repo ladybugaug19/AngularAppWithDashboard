@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+      <div class="col col-md-6 col-center mx-auto">
+        <div class="container mb-5 mt-3" style="text-align: center;">
+          <h3>Register</h3>
+        </div>
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+          <div class="form-group">
+            <div class="form-group">
+              <label>First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="firstName"
+                [(ngModel)]="employee.firstName"
+              />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="lastName"
+                [(ngModel)]="employee.lastName"
+              />
+              <div class="form-group">
+                <label>UserName</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="empUserName"
+                  [(ngModel)]="employee.userName"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="employee.login.email"
+              />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="employee.login.password"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label>Role</label>
+              <select
+                class="custom-select form-control"
+                id="role"
+                name="role"
+                [(ngModel)]="employee.login.role"
+                required
+              >
+                <option value="">Select Role</option>
+                <option value="MANAGER">Manager</option>
+                <option value="DEVTEST">Developer/Tester</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Manager</label>
+              <select class="custom-select form-control" name="mgrId" [(ngModel)]="employee.empMgr.empId">
+                <!-- <option value="">Choose Manager</option> -->
+                <option *ngFor="let mgr of manager" [value]="mgr.empId">
+                  {{ mgr.firstName }}
+                </option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+  
