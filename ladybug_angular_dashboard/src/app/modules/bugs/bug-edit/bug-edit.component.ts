@@ -13,6 +13,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./bug-edit.component.css']
 })
 export class BugEditComponent implements OnInit {
+  
+  projectId:Number;
 
   bug: BugDtls = { bugId: 0, bugName: "", bugDesc: "", bugStatus: "", bugMgrId: 0, bugPriority: "" };
   empName: string = "";
@@ -37,6 +39,7 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
     this.currentEmp = JSON.parse(localStorage.getItem("user"));
     const projectId = +this.route.snapshot.params['projectId'];
+    this.projectId=projectId;
     const bugId = +this.route.snapshot.params['bugId'];
     this.bugSvc.getBugById(bugId).subscribe(dataArr => {
       if (dataArr != false) {
