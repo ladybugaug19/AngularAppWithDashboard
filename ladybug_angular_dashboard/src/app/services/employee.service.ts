@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { Employee } from "../models/employee.model";
+import { ENDPOINTS } from '../endpoints/rest.endpoints';
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,8 @@ export class EmployeeService {
 
   public getMgrDtls(empId: number): Observable<Employee> {
     return this.httpClient
-      .get<Employee>("http://localhost:7070/empMgr/" + empId)
+      //.get<Employee>("http://localhost:7070/empMgr/" + empId)
+      .get<Employee>(ENDPOINTS.MGR_DETAILS + empId)
       .pipe(
         map(resData => {
           console.log(resData);
@@ -25,7 +27,8 @@ export class EmployeeService {
 
   public getEmployeeList(){
     return this.httpClient
-    .get<Employee[]>("http://localhost:7070/employees")
+    //.get<Employee[]>("http://localhost:7070/employees")
+    .get<Employee[]>(ENDPOINTS.EMP_LIST)
     .pipe(
       map(resData=>{
         console.log(resData);
@@ -38,19 +41,6 @@ export class EmployeeService {
   }
 
   employees: Employee[];
-  // public getEmployees(){
-  //   return this.httpClient
-  //       .get<Employee>("http://localhost:7070/employees")
-  //       .pipe(
-  //         map(data=> {
-  //           // if(data!=false){
-  //           //   return data;
-  //           // }
-  //           return data;
-  //         })
-  //       );
-
-  // }
 
   public getEmployees() {
     return this.employees;
@@ -58,7 +48,8 @@ export class EmployeeService {
 
   public getManagers() {
     return this.httpClient
-      .get<Employee[]>("http://localhost:7070/manager")
+      //.get<Employee[]>("http://localhost:7070/manager")
+      .get<Employee[]>(ENDPOINTS.MGR_LIST)
       .pipe(
         map(data => {
           return data;
@@ -70,7 +61,8 @@ export class EmployeeService {
     console.log(employee);
 
     return this.httpClient
-      .post<any>("http://localhost:7070/register", 
+      //.post<any>("http://localhost:7070/register", 
+      .post<any>(ENDPOINTS.REGISTER_EMP, 
         employee
       )
       .pipe(

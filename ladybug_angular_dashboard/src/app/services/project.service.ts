@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 import { Project } from '../models/project.model';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee.model';
+import { ENDPOINTS } from '../endpoints/rest.endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,14 @@ export class ProjectService {
   public getProjects():Observable<Project[]> {
     console.log("hhhhhh");
     return this.httpClient
-      .get<Project[]>("http://localhost:7070/projects")
-      .pipe(map(responseData=>{ console.log(responseData); this.projects=responseData; return responseData}));
+      //.get<Project[]>("http://localhost:7070/projects")
+      .get<Project[]>(ENDPOINTS.GET_ALL_PROJECTS)
+      .pipe(map(responseData=>
+      { 
+        console.log(responseData);
+        this.projects=responseData; 
+        return responseData
+      }));
   }
 
   // public getProjects():Project[]{
@@ -53,13 +60,17 @@ export class ProjectService {
     // return p;
 
     return this.httpClient
-    .get<Project>("http://localhost:7070/project/"+id)
-    .pipe(map(resData=>{return resData;}));
+    //.get<Project>("http://localhost:7070/project/"+id)
+      .get<Project>(ENDPOINTS.GET_PROJECT_DTLS + id)
+      .pipe(map(resData=>{return resData;}));
   }
 
 
   public getEmpListInProject(projectId:number){
-    return this.httpClient.get<any>("http://localhost:7070/employeesDevTest/"+projectId).pipe(map(data=>{
+    return this.httpClient
+    //.get<any>("http://localhost:7070/employeesDevTest/"+projectId)
+      .get<any>(ENDPOINTS.EMP_LIST_IN_PROJECT + projectId)
+    .pipe(map(data=>{
       return data;
     }));
   }

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Employee } from "../models/employee.model";
+import { ENDPOINTS } from '../endpoints/rest.endpoints';
 
 @Injectable({
   providedIn: "root"
@@ -25,7 +26,8 @@ export class AuthService {
   //login validating employee
   public validateUser(email, password) {
     return this.httpClient
-      .post<any>("http://localhost:7070/authenticate", {
+      //.post<any>("http://localhost:7070/authenticate", {
+      .post<any>(ENDPOINTS.LOGIN, {
         email: email,
         password: password
       })
@@ -45,29 +47,20 @@ export class AuthService {
           else {
             return false;
           }
-          // if (data === true) {
-          //   this.LoggedIn = true;
-          //   return true;
-          // } else {
-          //   this.LoggedIn = false;
-          //   return false;
-          // }
+          
         })
       );
   }
 
-  //register
-  // public register(empId, empName, empEmail, empPassword, empRole, empUserName) {
-  //   console.log(empId);
+
+
+
+  // public register(emp: Employee) {
+  //   console.log("regiter--->" + emp);
   //   return this.httpClient
-  //     .post<any>("http://localhost:7070/register", {
-  //       empId: empId,
-  //       empName: empName,
-  //       empEmail: empEmail,
-  //       empPassword: empPassword,
-  //       empRole: empRole,
-  //       empUserName: empUserName
-  //     })
+  //     .post<any>("http://localhost:7070/register",
+  //       emp
+  //     )
   //     .pipe(
   //       map(data => {
   //         console.log(data);
@@ -83,27 +76,6 @@ export class AuthService {
 
 
 
-  public register(emp: Employee) {
-    console.log("regiter--->" + emp);
-    return this.httpClient
-      .post<any>("http://localhost:7070/register",
-        emp
-      )
-      .pipe(
-        map(data => {
-          console.log(data);
-          if (data === true) {
-            return data;
-          } else {
-            return false;
-          }
-        })
-      );
-  }
-
-
-
-
 
   // reset password service layer,sending email to get the link to reset the password
 
@@ -111,7 +83,8 @@ export class AuthService {
     console.log("in authservice");
     console.log(email);
     return this.httpClient
-      .post<any>("http://localhost:7070/forgot", {
+      //.post<any>("http://localhost:7070/forgot", {
+      .post<any>(ENDPOINTS.FORGOT_PASS, {
         email: email
       })
       .pipe(
@@ -133,7 +106,8 @@ export class AuthService {
   public submitPwd(password, token) {
     console.log("token pass->",token);
     return this.httpClient
-      .post<any>("http://localhost:7070/reset/" + token, {
+      //.post<any>("http://localhost:7070/reset/" + token, {
+      .post<any>(ENDPOINTS.RESET_PASS + token, {
         password: password
       })
       .pipe(
@@ -146,10 +120,6 @@ export class AuthService {
         })
       );
   }
-
-  // public getManagers(): Employee[] {
-  //   return this.employee.employeeSubOrdinates;
-  // }
 
   public getEmployeeRole():string{
     return this.employee.login.role;
