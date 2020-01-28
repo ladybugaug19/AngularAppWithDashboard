@@ -32,6 +32,7 @@ export class BugEditComponent implements OnInit {
   isStatusChanger:boolean = false;
   isBugAssigner: boolean = false;
   isNone = false;
+  isBugIssuer:boolean=false;
 
   constructor(private bugSvc: BugService, private projSvc: ProjectService,
     private route: ActivatedRoute) { }
@@ -47,6 +48,10 @@ export class BugEditComponent implements OnInit {
         this.bug = dataArr[0];
         this.empName = dataArr[1].firstName + " " + dataArr[1].lastName;
         console.log(dataArr[1]);
+        if(dataArr[1].empId == this.currentEmp.empId)
+        {
+          this.isBugIssuer=true;
+        }
         if(this.bug.bugStatus == 'NEW'){
           // this.bug.bugStatus = 'INPROGRESS';
           this.statusArray = ["NEW","INPROGRESS"];  //After New the status can be INPROGRESS
@@ -80,8 +85,10 @@ export class BugEditComponent implements OnInit {
     if(this.isBugAssigner){           //support employee
       this.bug.bugAssignee = +this.bugEditForm.value.bugAssignee;
       this.bug.bugStatus = this.bugEditForm.value.status;
+      this.bug.bugPriority=this.bugEditForm.value.bugPriority;
     }else if(this.isStatusChanger){   //DEVTEST or support
       this.bug.bugStatus = this.bugEditForm.value.status;
+      this.bug.bugPriority=this.bugEditForm.value.bugPriority;
       // if (this.bugEditForm.value.status == ""){
         
       // }

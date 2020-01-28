@@ -23,7 +23,8 @@ export const ENDPOINTS = {
     //project.service.ts used end points:->
     GET_ALL_PROJECTS: `${root}/projects`,
     GET_PROJECT_DTLS: `${root}/project/`,
-    EMP_LIST_IN_PROJECT: `${root}/employeesDevTest/`
+    EMP_LIST_IN_PROJECT: `${root}/employeesDevTest/`,
+    ADD_PROJECT: `${root}/addProject`,
 
 
 };

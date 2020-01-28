@@ -33,6 +33,8 @@ import { BugCreateComponent } from 'src/app/modules/bugs/bug-create/bug-create.c
 import { BugViewComponent } from 'src/app/modules/bugs/bug-view/bug-view.component';
 import { BugEditComponent } from 'src/app/modules/bugs/bug-edit/bug-edit.component';
 import { RegisterComponent } from 'src/app/modules/register/register.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+//import { ProjectCreateComponent } from 'src/app/modules/projects/project-create/project-create.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { RegisterComponent } from 'src/app/modules/register/register.component';
     //BugCreateComponent,
     //BugViewComponent,
     //BugEditComponent,
-    RegisterComponent
+    RegisterComponent,
+   // ProjectCreateComponent
   ],
   imports: [
     CommonModule,
@@ -65,10 +68,12 @@ import { RegisterComponent } from 'src/app/modules/register/register.component';
     MatInputModule,
     MatRippleModule,
     MatListModule,
+    MatCardModule,
     NgxSpinnerModule,
     Ng8BreadcrumbModule.forRoot({
       prefix: 'Home', // default 'false'
     }),
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class DefaultModule {}

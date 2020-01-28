@@ -18,6 +18,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { BugsComponent } from './modules/bugs/bugs.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { AdminGuard } from './services/admin.guard';
+import { ProjectCreateComponent } from './modules/projects/project-create/project-create.component';
 
 
 const routes: Routes = [
@@ -40,9 +41,14 @@ const routes: Routes = [
       { path: "register", component: RegisterComponent, data: { breadcrumb: 'Register' }, canActivate: [AdminGuard]},
 	  {
         path: "projects", data: { breadcrumb: 'Projects' }, children: [
-          { path: "", component: ProjectsComponent, pathMatch: "full", data: { breadcrumb: null } },
+          { 
+            path: "", component: ProjectsComponent, pathMatch: "full", data: { breadcrumb: null } 
+          },
           {
-            path: ":id", component: ProjectDetailsComponent, data: { breadcrumb: '{id}' }
+            path: "addProject", component: ProjectCreateComponent, data: { breadcrum: 'Add Project' } 
+          },
+          {
+            path: ":id", component: ProjectDetailsComponent, pathMatch: "full", data: { breadcrumb: '{id}' }
           },
           {
             path: "bug", component: BugsComponent, data: { breadcrum: null }, children: [

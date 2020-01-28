@@ -1,11 +1,17 @@
+
+<div >
+<button mat-raised-button color="primary" routerLink='/dashboard/projects/addProject'>Add Project</button>
+</div>
 <div class="row">
-    <div *ngFor="let project of projects" class="col-sm-6 mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"> {{project.projectName | uppercase}} - {{project.projectId}} </h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a [routerLink]="['/dashboard/projects',project.projectId]" class="btn btn-primary">View</a>
-            </div>
-        </div>
-    </div>
+    <div *ngFor="let project of projArr" class="col-sm-6 mt-4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title> {{project.projectName | uppercase}} - {{project.projectId}} </mat-card-title>
+                <mat-card-subtitle>{{project.projectDesc}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [routerLink]="['/dashboard/projects',project.projectId]" mat-button>View</button>
+            </mat-card-actions>
+        </mat-card>
+    <!-- </div> -->
 </div>

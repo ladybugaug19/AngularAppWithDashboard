@@ -1,38 +1,63 @@
-<button mat-raised-button color="primary" [routerLink]="['/dashboard/projects/',projectId]" >Back</button><br><br>
+<button mat-raised-button color="primary" [routerLink]="['/dashboard/projects/',projectId]">Back</button><br><br>
+<h3>Bug Edit</h3>
 <form (ngSubmit)="onBugEdit()" #f="ngForm">
-    <div class="form-group">
-        <label for="bugId">Bug ID</label>
-        <input type="text" class="form-control" id="bugId" name="bugId" [(ngModel)]="bug.bugId" readonly>
 
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="bugId">Bug ID</label>
+            <input type="text" class="form-control" id="bugId" name="bugId" [(ngModel)]="bug.bugId" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="bugName">Bug Name</label>
+            <input type="text" class="form-control" id="bugName" name="bugName" [(ngModel)]="bug.bugName" readonly>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="bugName">Bug Name</label>
-        <input type="text" class="form-control" id="bugName" name="bugName" [(ngModel)]="bug.bugName" readonly>
-
-    </div>
     <div class="form-group">
         <label for="bugDesc">Bug Description</label>
-        <textarea class="form-control" id="bugDesc" name="bugDesc" rows="3" [(ngModel)]="bug.bugDesc" readonly></textarea>
+        <textarea class="form-control" id="bugDesc" name="bugDesc" rows="3" [(ngModel)]="bug.bugDesc"
+            readonly></textarea>
     </div>
-    <div *ngIf="isStatusChanger || isBugAssigner" class="form-group">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div *ngIf="!isBugIssuer && (isStatusChanger || isBugAssigner)" class="form-group">
+                <label for="status">Bug Status</label>
+                <select id="status" class="form-control" name="status" [(ngModel)]="statusArray[0]">
+                    <option *ngFor="let status of statusArray" [value]="status"> {{status}} </option>
+                </select>
+            </div>
+        
+            <div *ngIf="isNone || isBugIssuer" class="form-group">
+                <label for="bStatus">Bug Status</label>
+                <input type="text" class="form-control" id="bStatus" name="bStatus" [(ngModel)]="bug.bugStatus" readonly>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mgrName">Manager</label>
+            <input type="text" class="form-control" id="mgrName" name="mgrName" [(ngModel)]="bug.bugMgrId" readonly>
+        </div>
+      </div>
+
+
+
+
+    <!-- <div *ngIf="!isBugIssuer && (isStatusChanger || isBugAssigner)" class="form-group">
         <label for="status">Bug Status</label>
         <select id="status" class="form-control" name="status" [(ngModel)]="statusArray[0]">
             <option *ngFor="let status of statusArray" [value]="status"> {{status}} </option>
         </select>
     </div>
-    <!-- <div *ngIf="isBugAssigner" class="form-group">
-        <label for="bugStatus">Bug Status</label>
-        <input type="text" class="form-control" id="bugStatus" name="bugStatus" [(ngModel)]="bug.bugStatus" readonly>
-    </div> -->
-    <div *ngIf="isNone" class="form-group">
+
+    <div *ngIf="isNone || isBugIssuer" class="form-group">
         <label for="bStatus">Bug Status</label>
         <input type="text" class="form-control" id="bStatus" name="bStatus" [(ngModel)]="bug.bugStatus" readonly>
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
         <label for="mgrName">Manager</label>
         <input type="text" class="form-control" id="mgrName" name="mgrName" [(ngModel)]="bug.bugMgrId" readonly>
-    </div>
+    </div> -->
+
     <div class="form-group">
         <label for="empName">Bug Issuer</label>
         <input type="text" class="form-control" id="empName" name="empName" [(ngModel)]="empName" readonly>
@@ -41,7 +66,8 @@
     <div *ngIf="isBugAssigner" class="form-group">
         <label for="bugAssignee">Assign Bug To</label>
         <select id="bugAssignee" class="form-control" name="bugAssignee" ngModel required #bugAssign="ngModel">
-            <option *ngFor="let emp of projEmployees" [value]="emp.empId"> {{emp.firstName | uppercase}} {{emp.lastName | uppercase}} ( {{emp.empId}} ) </option>
+            <option *ngFor="let emp of projEmployees" [value]="emp.empId"> {{emp.firstName | uppercase}}
+                {{emp.lastName | uppercase}} ( {{emp.empId}} ) </option>
         </select>
         <span class="help-block" *ngIf="!bugAssign.valid && bugAssign.touched">This is required!</span>
     </div>
@@ -56,14 +82,22 @@
         <input type="text" class="form-control" id="assignee" name="assignee" [(ngModel)]="bug.assignee" readonly>
     </div>
 
-    <div class="form-group">
+    <div *ngIf="isBugIssuer" class="form-group">
         <label for="bugPriority">Bug Priority</label>
-        <input type="text" class="form-control" id="bugPriority" name="bugPriority" [(ngModel)]="bug.bugPriority" readonly>
+        <select id="bugPriority" class="form-control" name="bugPriority" [(ngModel)]="bug.bugPriority" required
+            #bugPrior="ngModel">
+            <option value="HIGHEST">Highest</option>
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+            <option value="LOWEST">Lowest</option>
+        </select>
+        <span class="help-block" *ngIf="!bugPrior.valid && bugPrior.touched">This is required!</span>
     </div>
 
-    <div class="form-group">
-        <label for="bugPriority">Bug Priority</label>
-        <input type="text" class="form-control" id="bugPriority" name="bugPriority" [(ngModel)]="bug.bugPriority" readonly>
+    <div *ngIf="!isBugIssuer" class="form-group">
+        <label for="bugPrior">Bug Priority</label>
+        <input type="text" class="form-control" id="bugPrior" name="bugPrior" [(ngModel)]="bug.bugPriority" readonly>
     </div>
 
     <div *ngIf="!isNone">

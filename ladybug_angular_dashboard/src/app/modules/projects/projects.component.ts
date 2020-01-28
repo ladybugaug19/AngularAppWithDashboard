@@ -11,14 +11,14 @@ import { Project } from 'src/app/models/project.model';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects:Project[];
+  projArr:Project[];
 
   constructor(private svc: ProjectService, private router:Router) { }
 
   ngOnInit() {
     //this.projects = this.svc.getProjects();
     this.svc.getProjects().subscribe(projs=>{
-      this.projects = projs;
+      this.projArr = projs;
     });
   }
 

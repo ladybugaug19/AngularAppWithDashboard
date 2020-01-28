@@ -1,35 +1,39 @@
 <button mat-raised-button color="primary" [routerLink]="['/dashboard/projects/',projectId]" >Back</button><br><br>
+<h3>Bug Details</h3>
+<br>
 <form>
-    <div class="form-group">
-        <label for="bugId">Bug ID</label>
-        <input type="text" class="form-control" id="bugId" name="bugId" [(ngModel)]="bug.bugId" readonly>
-
-    </div>
-
-    <div class="form-group">
-        <label for="bugName">Bug Name</label>
-        <input type="text" class="form-control" id="bugName" name="bugName" [(ngModel)]="bug.bugName" readonly>
-
-    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="bugId">BugID</label>
+          <input type="text" class="form-control" id="bugId" name="bugId" [(ngModel)]="bug.bugId" readonly>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="bugName">Bug Name</label>
+          <input type="text" class="form-control" id="bugName" name="bugName" [(ngModel)]="bug.bugName" readonly>
+        </div>
+      </div>
     <div class="form-group">
         <label for="bugDesc">Bug Description</label>
         <textarea class="form-control" id="bugDesc" name="bugDesc" rows="3" [(ngModel)]="bug.bugDesc" readonly></textarea>
     </div>
-    <div class="form-group">
-        <label for="bugStatus">Status</label>
-        <input type="text" class="form-control" id="bugStatus" name="bugStatus" [(ngModel)]="bug.bugStatus" readonly>
-    </div>
-    <div class="form-group">
-        <label for="mgrName">Manager</label>
-        <input type="text" class="form-control" id="mgrName" name="mgrName" [(ngModel)]="bug.bugMgrId" readonly>
-    </div>
-    <div class="form-group">
-        <label for="empName">Bug Issuer</label>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="bugStatus">Status</label>
+            <input type="text" class="form-control" id="bugStatus" name="bugStatus" [(ngModel)]="bug.bugStatus" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="bugPriority">Bug Priority</label>
+            <input type="text" class="form-control" id="bugPriority" name="bugPriority" [(ngModel)]="bug.bugPriority" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="mgrName">Manager</label>
+            <input type="text" class="form-control" id="mgrName" name="mgrName" [(ngModel)]="bug.bugMgrId" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="empName">Bug Issuer</label>
         <input type="text" class="form-control" id="empName" name="empName" [(ngModel)]="empName" readonly>
-    </div>
-
-    <div class="form-group">
-        <label for="bugPriority">Bug Priority</label>
-        <input type="text" class="form-control" id="bugPriority" name="bugPriority" [(ngModel)]="bug.bugPriority" readonly>
-    </div>
+        </div>
+      </div>
 </form>

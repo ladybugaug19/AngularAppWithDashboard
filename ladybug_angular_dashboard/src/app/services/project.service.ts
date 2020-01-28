@@ -75,5 +75,19 @@ export class ProjectService {
     }));
   }
 
+  public addProject(proj: Project): Observable<boolean> {
+    return this.httpClient
+      .post<boolean>(ENDPOINTS.ADD_PROJECT, proj)
+      .pipe(
+        map(data => {
+          if (data === true) {
+            return data;
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
 
 }

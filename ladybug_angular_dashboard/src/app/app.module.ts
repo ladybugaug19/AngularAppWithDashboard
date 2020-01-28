@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
+//import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {
   MatSidenavModule,
   MatDividerModule,
@@ -70,7 +71,9 @@ import { ProjectsModule } from './modules/projects/projects.module';
     MatInputModule,
     MatRippleModule,
     ProjectsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatCardModule,
+    //NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [AuthService, EmployeeService, ProjectService],
   bootstrap: [AppComponent]

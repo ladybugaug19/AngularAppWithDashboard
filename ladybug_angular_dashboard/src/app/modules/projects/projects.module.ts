@@ -23,6 +23,7 @@ import { BugsComponent } from '../bugs/bugs.component';
 import { BugCreateComponent } from '../bugs/bug-create/bug-create.component';
 import { BugViewComponent } from '../bugs/bug-view/bug-view.component';
 import { BugEditComponent } from '../bugs/bug-edit/bug-edit.component';
+import { ProjectCreateComponent } from './project-create/project-create.component';
 
 
 
@@ -33,6 +34,7 @@ import { BugEditComponent } from '../bugs/bug-edit/bug-edit.component';
     BugCreateComponent,
     BugViewComponent,
     BugEditComponent,
+    ProjectCreateComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { BugEditComponent } from '../bugs/bug-edit/bug-edit.component';
     MatInputModule,
     MatRippleModule,
     MatListModule,
+    MatCardModule
   ]
 })
 export class ProjectsModule { }

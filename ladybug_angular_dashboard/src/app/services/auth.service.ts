@@ -131,7 +131,7 @@ export class AuthService {
   }
 
   public isAdmin():boolean{
-    console.log(this.employee);
+    //console.log(this.employee);
     let emp=JSON.parse(localStorage.getItem("user"));
     return emp.login.role=="ADMIN";
   }
