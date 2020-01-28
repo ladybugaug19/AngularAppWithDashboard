@@ -17,6 +17,7 @@ import { BugEditComponent } from './modules/bugs/bug-edit/bug-edit.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { BugsComponent } from './modules/bugs/bugs.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { AdminGuard } from './services/admin.guard';
 
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
     path: "dashboard", component: DefaultComponent, data: { breadcrumb: null }, children: [
       { path: "", component: DashboardComponent, data: { breadcrumb: 'Dashboard' }, pathMatch: "full" },
       { path: "employees", component: EmployeesComponent, data: { breadcrumb: 'Employees' } },
-      { path: "register", component: RegisterComponent, data: { breadcrumb: 'Register' }},
+      { path: "register", component: RegisterComponent, data: { breadcrumb: 'Register' }, canActivate: [AdminGuard]},
 	  {
         path: "projects", data: { breadcrumb: 'Projects' }, children: [
           { path: "", component: ProjectsComponent, pathMatch: "full", data: { breadcrumb: null } },

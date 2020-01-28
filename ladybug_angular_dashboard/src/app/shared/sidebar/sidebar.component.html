@@ -33,9 +33,9 @@
     <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/employees"><i class="material-icons">people_alt</i>Employees</a>
 
     <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/projects"><i class="material-icons">computer</i>Projects</a>
-
+    <div *ngIf="isAdmin()">
     <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/register"><i class="material-icons">person_add</i>Register</a>
-
+    </div>
     <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/assignBug">Assigning bug</a>
 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a> -->

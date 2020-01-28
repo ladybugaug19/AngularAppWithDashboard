@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,10 +10,11 @@ export class SidebarComponent implements OnInit {
 
   userName:string;
   role:string;
-
-  constructor() { }
+  
+  constructor(private auth:AuthService) { }
 
   ngOnInit() {
+
     if(localStorage.getItem("user") != null){
       this.userName = JSON.parse(localStorage.getItem("user")).firstName;
       if(JSON.parse(localStorage.getItem("user")).lastName!=null){
@@ -34,7 +36,10 @@ export class SidebarComponent implements OnInit {
     else if(this.role === 'MANAGER' ){
       return "Manager";
     }
+  }
 
+  isAdmin():boolean{
+    return this.auth.isAdmin();
   }
 
 }

@@ -9,18 +9,19 @@ import { ENDPOINTS } from '../endpoints/rest.endpoints';
 })
 export class AuthService {
   LoggedIn: boolean = JSON.parse(localStorage.getItem("LoggedIn"));
+  Role:String;
   constructor(private httpClient: HttpClient) { }
-
   public employee: Employee;
-
+  localEmp: Employee;
   public isLoggedIn() {
     return this.LoggedIn;
   }
 
   public logout() {
     this.LoggedIn = false;
-    localStorage.setItem("LoggedIn", JSON.stringify(this.LoggedIn));
+    localStorage.clear();
     sessionStorage.clear();
+    localStorage.setItem("LoggedIn", JSON.stringify(this.LoggedIn));
   }
 
   //login validating employee
@@ -39,9 +40,13 @@ export class AuthService {
             console.log("emp---->" + this.employee);
             console.log(this.employee.firstName);
             console.log(this.employee);
+            
+            localStorage.clear();
+            sessionStorage.clear();
             this.LoggedIn = true;
             localStorage.setItem("LoggedIn", JSON.stringify(this.LoggedIn));
             localStorage.setItem("user", JSON.stringify(this.employee));
+            this.localEmp=JSON.parse(localStorage.getItem("user"));
             return true;
           }
           else {
@@ -123,5 +128,11 @@ export class AuthService {
 
   public getEmployeeRole():string{
     return this.employee.login.role;
+  }
+
+  public isAdmin():boolean{
+    console.log(this.employee);
+    let emp=JSON.parse(localStorage.getItem("user"));
+    return emp.login.role=="ADMIN";
   }
 }
