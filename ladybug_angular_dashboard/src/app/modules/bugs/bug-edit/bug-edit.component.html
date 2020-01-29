@@ -23,7 +23,7 @@
         <div class="form-group col-md-6">
             <div *ngIf="!isBugIssuer && (isStatusChanger || isBugAssigner)" class="form-group">
                 <label for="status">Bug Status</label>
-                <select id="status" class="form-control" name="status" [(ngModel)]="statusArray[0]">
+                <select id="status" class="form-control" name="status" [(ngModel)]="bug.bugStatus">
                     <option *ngFor="let status of statusArray" [value]="status"> {{status}} </option>
                 </select>
             </div>
@@ -72,15 +72,15 @@
         <span class="help-block" *ngIf="!bugAssign.valid && bugAssign.touched">This is required!</span>
     </div>
 
-    <div *ngIf="isStatusChanger && bug.bugStatus!='NEW'" class="form-group">
+    <div *ngIf="bug.bugStatus!='NEW' && (!isBugAssigner && (isStatusChanger || !isNone) )" class="form-group">
         <label for="assignee">Bug Assigned To</label>
         <input type="text" class="form-control" id="assignee" name="assignee" [(ngModel)]="bug.assignee" readonly>
     </div>
 
-    <div *ngIf="isNone && bug.bugStatus!='NEW'" class="form-group">
+    <!-- <div *ngIf="isNone && bug.bugStatus!='NEW'" class="form-group">
         <label for="assignee">Bug Assigned To</label>
         <input type="text" class="form-control" id="assignee" name="assignee" [(ngModel)]="bug.assignee" readonly>
-    </div>
+    </div> -->
 
     <div *ngIf="isBugIssuer" class="form-group">
         <label for="bugPriority">Bug Priority</label>
@@ -101,6 +101,7 @@
     </div>
 
     <div *ngIf="!isNone">
-        <button type="submit" class="btn btn-primary" [disabled]="!isBugAssigner && !f.valid">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid" [disabled]="!isBugAssigner && !f.valid">Save</button>
     </div>
+
 </form>

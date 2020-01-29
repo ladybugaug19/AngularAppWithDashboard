@@ -19,6 +19,7 @@ import { BugsComponent } from './modules/bugs/bugs.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { AdminGuard } from './services/admin.guard';
 import { ProjectCreateComponent } from './modules/projects/project-create/project-create.component';
+import { ProjectGuard } from './services/project.guard';
 
 
 const routes: Routes = [
@@ -45,7 +46,7 @@ const routes: Routes = [
             path: "", component: ProjectsComponent, pathMatch: "full", data: { breadcrumb: null } 
           },
           {
-            path: "addProject", component: ProjectCreateComponent, data: { breadcrum: 'Add Project' } 
+            path: "addProject", component: ProjectCreateComponent, data: { breadcrum: 'Add Project' }, canActivate:[ProjectGuard] 
           },
           {
             path: ":id", component: ProjectDetailsComponent, pathMatch: "full", data: { breadcrumb: '{id}' }

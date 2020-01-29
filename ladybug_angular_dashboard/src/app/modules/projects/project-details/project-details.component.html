@@ -1,4 +1,4 @@
-<h3 class="display-5 text-center">Project Description</h3>
+<!-- <h3 class="display-5 text-center">Project Description</h3>
 <table class="table text-center">
     <thead class="thead-dark">
         <tr>
@@ -15,8 +15,32 @@
         </tr>
     </tbody>
 </table>
+<br><br> -->
+
+<h3 class="display-5 text-center">Project Description</h3>
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+    <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef class="bg-dark t-header"> Project </th>
+        <td mat-cell *matCellDef="let element"> {{project.projectName | uppercase }} - {{project.projectId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="projectDesc">
+        <th mat-header-cell *matHeaderCellDef class="bg-dark t-header"> Project Description </th>
+        <td mat-cell *matCellDef="let element"> {{project.projectDesc}} </td>
+    </ng-container>
+    <ng-container matColumnDef="projectMgr">
+        <th mat-header-cell *matHeaderCellDef class="bg-dark t-header"> Project Manager </th>
+        <td mat-cell *matCellDef="let element"> {{project.projectMgr}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+
+
+
+<br><br>
 <!-- <a *ngIf="empRole=='DEVTEST'" [routerLink]="['/dashboard/bug/add',project.projectId]" class="btn btn-info">Add a Bug</a> -->
-<button *ngIf="empRole=='DEVTEST'" mat-raised-button color="primary" [routerLink]="['/dashboard/projects/bug/add',project.projectId]">Add A Bug</button>
+<button *ngIf="empRole=='DEVTEST'" mat-raised-button color="primary"
+    [routerLink]="['/dashboard/projects/bug/add',project.projectId]">Add A Bug</button>
 <!-- bugs -->
 <!-- <h3 class="display-5 text-center">Associated Bugs</h3>
 <table class="table text-center">
@@ -85,8 +109,10 @@
             <th mat-header-cell *matHeaderCellDef class="bg-dark t-header"></th>
             <td mat-cell *matCellDef="let element">
                 <!-- ['/dashboard/projects',project.projectId,'/bug/add'] -->
-                <button mat-button color="primary" [routerLink]="['/dashboard/projects/bug/view',project.projectId,element.bugId]">View</button>
-                <button mat-button color="primary" [routerLink]="['/dashboard/projects/bug/edit',project.projectId,element.bugId]">Edit</button>
+                <button mat-button color="primary"
+                    [routerLink]="['/dashboard/projects/bug/view',project.projectId,element.bugId]">View</button>
+                <button mat-button color="primary"
+                    [routerLink]="['/dashboard/projects/bug/edit',project.projectId,element.bugId]">Edit</button>
             </td>
         </ng-container>
 
@@ -94,7 +120,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-        <button mat-raised-button color="primary" [routerLink]="['/dashboard/bug/add',project.projectId]">Add A Bug</button>
+        <button mat-raised-button color="primary" [routerLink]="['/dashboard/bug/add',project.projectId]">Add A
+            Bug</button>
         <button color="primary">Primary</button>
     </mat-paginator>
 </div>

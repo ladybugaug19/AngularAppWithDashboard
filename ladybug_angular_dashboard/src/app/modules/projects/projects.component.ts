@@ -12,7 +12,8 @@ import { Project } from 'src/app/models/project.model';
 export class ProjectsComponent implements OnInit {
 
   projArr:Project[];
-
+  isAdmin:boolean=false;
+  role:string;
   constructor(private svc: ProjectService, private router:Router) { }
 
   ngOnInit() {
@@ -20,6 +21,12 @@ export class ProjectsComponent implements OnInit {
     this.svc.getProjects().subscribe(projs=>{
       this.projArr = projs;
     });
+
+   this.role=JSON.parse(localStorage.getItem('user')).login.role;
+   if(this.role=='ADMIN')
+   {
+     this.isAdmin=true;
+   }
   }
 
   // onProjectSelect(projectId:number){

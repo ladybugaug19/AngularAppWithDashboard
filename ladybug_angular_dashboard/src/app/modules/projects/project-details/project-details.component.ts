@@ -19,6 +19,7 @@ export class ProjectDetailsComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  proj2:Project[]=[];
   project: Project;
   bugs: BugDtls[]=[];
   empMgr:string;
@@ -26,6 +27,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   displayedColumns: string[] = ["bugId", "bugName", "bugStatus", "bugPriority","navigationBtns"];
   dataSource;
+  dataSource2;
+  displayedColumns2: string[] = ["projectName", "projectDesc", "projectMgr"];
   
   constructor(private svc: ProjectService, private bugSvc: BugService,
               private route: ActivatedRoute) { }
@@ -38,6 +41,8 @@ export class ProjectDetailsComponent implements OnInit {
     this.svc.getSingleProject(id).subscribe(p=>{
       this.project = p;
       console.log(this.project);
+      this.proj2[0]=p;
+      this.dataSource2 = new MatTableDataSource(this.proj2);
       //this.bugs = p.bugDtls;
     });
 

@@ -81,14 +81,17 @@ export class BugEditComponent implements OnInit {
   }
 
   public onBugEdit(){
-    console.log(this.bug)
+    
     if(this.isBugAssigner){           //support employee
       this.bug.bugAssignee = +this.bugEditForm.value.bugAssignee;
       this.bug.bugStatus = this.bugEditForm.value.status;
       this.bug.bugPriority=this.bugEditForm.value.bugPriority;
+      console.log("going to update--->"+this.bug)
     }else if(this.isStatusChanger){   //DEVTEST or support
-      this.bug.bugStatus = this.bugEditForm.value.status;
+      // this.bug.bugStatus = this.bugEditForm.value.status;
+      this.bug.bugStatus = this.bugEditForm.value.bStatus;
       this.bug.bugPriority=this.bugEditForm.value.bugPriority;
+      console.log("else if going to update--->"+this.bug.bugStatus)
       // if (this.bugEditForm.value.status == ""){
         
       // }
