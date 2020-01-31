@@ -13,6 +13,18 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) {}
 
+  public getEmpDtls(empId: number): Observable<Employee> {
+    return this.httpClient
+      //.get<Employee>("http://localhost:7070/empMgr/" + empId)
+      .get<Employee>(ENDPOINTS.EMP_DETAILS + empId)
+      .pipe(
+        map(resData => {
+          console.log(resData);
+          return resData;
+        })
+      );
+    }
+
   public getMgrDtls(empId: number): Observable<Employee> {
     return this.httpClient
       //.get<Employee>("http://localhost:7070/empMgr/" + empId)

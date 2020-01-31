@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
         this.userRole = JSON.parse(localStorage.getItem("user")).login.role;
       }
       chart1 = new CanvasJS.Chart("chartContainer1", {
-        theme: "light2",
+        theme: "light4",
         animationEnabled: true,
         exportEnabled: true,
         title: {
@@ -93,10 +93,11 @@ export class DashboardComponent implements OnInit {
           {
             type: "column",
             dataPoints: [
-              { y: this.bugPriorityCount[0], label: "LOW" },
-              { y: this.bugPriorityCount[1], label: "MEDIUM" },
-              { y: this.bugPriorityCount[2], label: "HIGH" },
-              { y: this.bugPriorityCount[3], label: "HIGHEST" }
+              { y: this.bugPriorityCount[0], label: "LOWEST" },
+              { y: this.bugPriorityCount[1], label: "LOW" },
+              { y: this.bugPriorityCount[2], label: "MEDIUM" },
+              { y: this.bugPriorityCount[3], label: "HIGH" },
+              { y: this.bugPriorityCount[4], label: "HIGHEST" }
             ]
           }
         ]
@@ -119,10 +120,11 @@ export class DashboardComponent implements OnInit {
             toolTipContent: "<b>{name}</b>: {y} (#percent%)",
             indexLabel: "{name} - #percent%",
             dataPoints: [
-              { y: this.bugPriorityCount[0], name: "LOW" },
-              { y: this.bugPriorityCount[1], name: "MEDIUM" },
-              { y: this.bugPriorityCount[2], name: "HIGH" },
-              { y: this.bugPriorityCount[3], name: "HIGHEST" }
+              { y: this.bugPriorityCount[0], name: "LOWEST" },
+              { y: this.bugPriorityCount[1], name: "LOW" },
+              { y: this.bugPriorityCount[2], name: "MEDIUM" },
+              { y: this.bugPriorityCount[3], name: "HIGH" },
+              { y: this.bugPriorityCount[4], name: "HIGHEST" }
             ]
           }
         ]

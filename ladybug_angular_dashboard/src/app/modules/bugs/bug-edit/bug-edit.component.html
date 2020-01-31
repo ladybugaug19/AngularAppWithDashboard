@@ -59,7 +59,7 @@
 
     <div *ngIf="bug.bugStatus!='NEW' && (!isBugAssigner && (isStatusChanger || !isNone) )" class="form-group">
         <label for="assignee">Bug Assigned To</label>
-        <input type="text" class="form-control" id="assignee" name="bugAssignee" [(ngModel)]="bug.assignee" readonly>
+        <input type="text" class="form-control" id="assignee" name="bugAssignee" [(ngModel)]="assignee" readonly>
     </div>
 
     <!-- <div *ngIf="isNone && bug.bugStatus!='NEW'" class="form-group">

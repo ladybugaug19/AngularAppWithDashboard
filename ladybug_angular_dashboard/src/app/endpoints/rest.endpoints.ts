@@ -11,6 +11,7 @@ export const ENDPOINTS = {
     MGR_LIST:`${root}/manager`,
     EMP_LIST: `${root}/employees`,
     MGR_DETAILS: `${root}/empMgr/`,
+    EMP_DETAILS: `${root}/employee/`,
 
     //bug.service.ts used end points:->
     ADD_BUG: `${root}/addBug`,

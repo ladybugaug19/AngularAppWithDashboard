@@ -6,6 +6,7 @@ import { BugDtls } from 'src/app/models/bug-dtls.model';
 import { Employee } from 'src/app/models/employee.model';
 import { ProjectService } from 'src/app/services/project.service';
 import { NgForm } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-bug-edit',
@@ -27,6 +28,8 @@ export class BugEditComponent implements OnInit {
     "NEW", "INPROGRESS", "FIXED", "CLOSED"
   ];
 
+  assignee:string;
+
   projEmployees: Employee[]=[];
 
   isStatusChanger:boolean = false;
@@ -34,7 +37,7 @@ export class BugEditComponent implements OnInit {
   isNone = false;
   isBugIssuer:boolean=false;
 
-  constructor(private bugSvc: BugService, private projSvc: ProjectService,
+  constructor(private bugSvc: BugService, private projSvc: ProjectService,private empService:EmployeeService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -44,8 +47,11 @@ export class BugEditComponent implements OnInit {
     const bugId = +this.route.snapshot.params['bugId'];
     this.bugSvc.getBugById(bugId).subscribe(dataArr => {
       if (dataArr != false) {
-        console.log(dataArr);
+        console.log("data--->",dataArr);
         this.bug = dataArr[0];
+        this.empService.getEmpDtls(this.bug.bugAssignee).subscribe(res=>{
+          this.assignee=res.firstName + " "+res.lastName;
+        });
         this.empName = dataArr[1].firstName + " " + dataArr[1].lastName;
         console.log(dataArr[1]);
         if(dataArr[1].empId == this.currentEmp.empId)
