@@ -25,6 +25,8 @@ export const ENDPOINTS = {
     GET_PROJECT_DTLS: `${root}/project/`,
     EMP_LIST_IN_PROJECT: `${root}/employeesDevTest/`,
     ADD_PROJECT: `${root}/addProject`,
-
+    GET_ALL_EMP_PROJECTS: `${root}//getProjectsUnderEmp/`,
+    GET_ALL_MGR_PROJECTS: `${root}//getProjectsUnderMgr/`,
+    GET_ALL_SUPPORT_PROJECTS: `${root}//getProjectsUnderSupport/`,
 
 };

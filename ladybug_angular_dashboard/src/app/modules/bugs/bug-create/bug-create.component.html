@@ -5,7 +5,7 @@
 <div *ngIf="isBugNotAdded" class="alert alert-success" role="alert">
     {{resMsg}}
 </div>
-<button mat-raised-button color="primary" [routerLink]="['/dashboard/projects/',projectId]" >Back</button><br><br>
+<button mat-raised-button color="primary" [routerLink]="['/projects/',projectId]" >Back</button><br><br>
 <form (ngSubmit)="onBugAdd()" #f="ngForm">
     <div class="form-group">
         <label for="bugName">Bug Name</label>

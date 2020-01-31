@@ -90,4 +90,39 @@ export class ProjectService {
   }
 
 
+  public getProjectsOfEmp(empId:number):Observable<Project[]> {
+    return this.httpClient
+      .get<Project[]>(ENDPOINTS.GET_ALL_EMP_PROJECTS + empId)
+      .pipe(map(responseData=>
+      { 
+        console.log(responseData);
+        this.projects=responseData; 
+        return responseData
+      }));
+  }
+
+  public getProjectsOfMgr(empId:number):Observable<Project[]> {
+    return this.httpClient
+      .get<Project[]>(ENDPOINTS.GET_ALL_MGR_PROJECTS + empId)
+      .pipe(map(responseData=>
+      { 
+        console.log(responseData);
+        this.projects=responseData; 
+        return responseData
+      }));
+  }
+
+
+  public getProjectsOfSupport(empId:number):Observable<Project[]> {
+    return this.httpClient
+      .get<Project[]>(ENDPOINTS.GET_ALL_SUPPORT_PROJECTS + empId)
+      .pipe(map(responseData=>
+      { 
+        console.log(responseData);
+        this.projects=responseData; 
+        return responseData
+      }));
+  }
+
+
 }

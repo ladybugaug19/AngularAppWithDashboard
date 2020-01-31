@@ -14,7 +14,7 @@
                         <img class="img" src="../../../../assets/default-avatar-png-2-original.png">
                     </a>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <h4 class="card-title mt-3">{{userName | uppercase}}</h4>
                     <h6 class="card-category text-gray">{{ getUserRole() }}</h6>
                 </div>
@@ -31,11 +31,11 @@
 
     <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard"> <i mat-list-item class="material-icons">dashboard</i> Dashboard</a>
 
-    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/employees"><i class="material-icons">people_alt</i>Employees</a>
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/employees"><i class="material-icons">people_alt</i>Employees</a>
 
-    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/projects"><i class="material-icons">computer</i>Projects</a>
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/projects"><i class="material-icons">computer</i>Projects</a>
     <div *ngIf="isAdmin()">
-    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/dashboard/register"><i class="material-icons">person_add</i>Register</a>
+    <a mat-list-item routerLinkActive="list-item-active active" routerLink="/register"><i class="material-icons">person_add</i>Register</a>
     </div>
     <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/assignBug">Assigning bug</a>
 

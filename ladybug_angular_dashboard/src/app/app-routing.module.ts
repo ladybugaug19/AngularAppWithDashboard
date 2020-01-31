@@ -36,8 +36,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: "dashboard", component: DefaultComponent, data: { breadcrumb: null }, children: [
-      { path: "", component: DashboardComponent, data: { breadcrumb: 'Dashboard' }, pathMatch: "full" },
+    path: "", component: DefaultComponent , data: { breadcrumb: null }, children: [
+      { path: "dashboard", component: DashboardComponent, data: { breadcrumb: 'Dashboard' } },
       { path: "employees", component: EmployeesComponent, data: { breadcrumb: 'Employees' } },
       { path: "register", component: RegisterComponent, data: { breadcrumb: 'Register' }, canActivate: [AdminGuard]},
 	  {

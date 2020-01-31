@@ -7,3 +7,6 @@ select.ng-invalid.ng-touched {
 .help-block {
     color: red;
 }
+.form-control{
+    background-color: transparent;
+}

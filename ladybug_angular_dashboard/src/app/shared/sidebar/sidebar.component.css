@@ -44,3 +44,11 @@ img {
   /* .profile{
       display: inline;
   } */
+
+ a.active   
+{
+    text-decoration:none;
+    color: turquoise;
+    /* border: whitesmoke; */
+    
+}
